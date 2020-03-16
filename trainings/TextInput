@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import { TextInput, View, Text, StyleSheet } from 'react-native';
+
+
+export default function App() {
+  const [name, setName] = useState('zahra');
+  const [age, setAge] = useState('24')
+
+  
+  return (
+    
+    <View style={styles.container}>
+      <TextInput style ={styles.input} placeholder='enter name' onChangeText={(val)=>setName(val)}/>
+      <TextInput style ={styles.input} placeholder='enter age' onChangeText={(val)=>setAge(val)} keyboardType='numeric'/>
+      <Text>my name is {name} and im {age}</Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  input:{
+    borderWidth:1,
+    width:200,
+    borderColor: '#777',
+    padding:5,
+    margin:10,
+  },
+});

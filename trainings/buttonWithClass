@@ -1,0 +1,49 @@
+import React from 'react';
+import { Button, View, Text, StyleSheet } from 'react-native';
+
+
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'zahra',
+      person:{
+        point: 'his',
+        name:'farid',
+        age: '25'
+      }
+    };
+    this.onclickHandler = this.onclickHandler.bind(this);
+  }
+  onclickHandler() {
+    
+    this.setState({ name: 'farid' , mName: 'zahra'})
+    this.setState(prevState => ({
+      person: {                   // object that we want to update
+        ...prevState.person,    // keep all other key-value pairs
+        point:'her',
+        name: 'zahra',       // update the value of specific key
+        age:'24'
+    }
+    }))
+  }
+  render(){
+    return(
+      <View style = { styles.container } >
+      <Text>my name is {this.state.name}</Text>
+      <Text>{this.state.person.point} name is {this.state.person.name} and {this.state.person.point} age is {this.state.person.age}</Text>
+      <View style={{ marginTop: 20 }}>
+        <Button title='change name' onPress={this.onclickHandler} />
+      </View>
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+});

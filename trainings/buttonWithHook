@@ -1,0 +1,31 @@
+import React, { useState } from 'react';
+import { Button, View, Text, StyleSheet } from 'react-native';
+
+
+export default function App() {
+  const [name, setName] = useState('zahra');
+  const [person, setPerson] = useState({point:'his', name: 'farid', age:25})
+
+  const onclickHandler = ()=> {
+    setName('farid')
+    setPerson({point:'her', name:'zahra', age:'24'})
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text>my name is {name}</Text>
+      <Text>{person.point} name is {person.name} and {person.point} age is {person.age}</Text>
+      
+      <View style={{marginTop:20}}>
+        <Button title='change name' onPress={onclickHandler} />
+      </View>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+});

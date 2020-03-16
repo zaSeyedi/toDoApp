@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+import { FlatList, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+
+
+export default function App() {
+  const [person, setPerson] = useState([
+    { name: 'zahra1', ey: '1' },
+    { name: 'zahra2', ey: '2' },
+    { name: 'zahra3', ey: '3' },
+    { name: 'zahra4', ey: '4' },
+    { name: 'zahra5', ey: '5' },
+    { name: 'zahra6', ey: '6' },
+    { name: 'zahra7', ey: '7' },
+  ])
+  const pressHandler=(ey)=>{
+    console.log(ey)
+    setPerson((prevPerson)=>prevPerson.filter(item=>item.ey != ey))
+  }
+
+
+  return (
+
+    <View style={styles.container}>
+
+
+      {/* baraye estefade az map bayad ScrollView biarim vali flatlist khodkar dare,
+        dar flatlist key ham lazem nist bedim automatic dare key baraye har item,
+        az nazar performance ham behtare flatlist,
+        hame ye item ha ham veghti safhe render mishe load nemishan. faghat oonai ke dide mishe load mishan
+        baghie vaghti safhe scroll shod load mishe */}
+
+      <FlatList
+      keyExtractor={(item)=>item.ey}
+      data={person}
+      renderItem={({item})=>(
+        <TouchableOpacity onPress={()=>pressHandler(item.ey)}>
+        <Text style={styles.item}>{item.name}</Text>
+        </TouchableOpacity>
+      )}>
+      </FlatList>
+
+
+
+      {/* <ScrollView>
+        {person.map(item => (
+          <View key={item.key} >
+            <Text style={styles.item}>{item.name}</Text>
+          </View>
+
+        ))}
+        </ScrollView> */}
+    </View>
+
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    //justifyContent: 'center',
+    // alignItems: 'center'
+  },
+  item: {
+    padding: 50,
+    margin: 5,
+    backgroundColor: 'pink'
+  },
+});
