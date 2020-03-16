@@ -14,7 +14,7 @@ export default function App() {
 
   const pressHandler = (key) => {
     Alert.alert('DELETE!','Do you realy want to delete this?',[
-      {text:'no', onPress:()=>console.log('closed')},
+      {text:'nooo', onPress:()=>console.log('closed')},
       {text:'yes', onPress:()=>deleteHandler(key)}
     ])
     
